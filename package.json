@@ -1,0 +1,22 @@
+{
+  "name": "npm-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot to query the npm registry",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "npm",
+    "query",
+    "search",
+    "inline"
+  ],
+  "author": "Rogério Munhoz",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.15.0"
+  }
+}
