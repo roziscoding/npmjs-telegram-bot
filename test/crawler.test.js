@@ -7,8 +7,11 @@ describe('Crawler', function() {
         const c = new Crawler();
         let results;
 
-        before(function() {
-            c.search('cross spawn').then(res => results = res);
+        before(function(done) {
+            c.search('cross spawn').then(res => {
+                results = res;
+                done();
+            });
         });
 
         it('Results should be an Array', function() {
@@ -36,8 +39,11 @@ describe('Crawler', function() {
         const c = new Crawler();
         let results;
 
-        before(function() {
-            c.recommend().then(res => results = res);
+        before(function(done) {
+            c.recommend().then(res => {
+                results = res;
+                done();
+            });
         });
 
         it('Results should be an Array', function() {
