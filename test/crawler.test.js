@@ -1,69 +1,61 @@
 /* global describe, it, before */
-import {expect} from 'chai';
-import Crawler from '../src/lib/crawler';
+const { expect } = require('chai')
+const crawler = require('../app/lib/crawler')
 
-describe('Crawler', function() {
-    describe('Search', function() {
-        const c = new Crawler();
-        let results;
+describe('Crawler', () => {
+  describe('Search', () => {
+    let results
 
-        before(function(done) {
-            c.search('cross spawn').then(res => {
-                results = res;
-                done();
-            });
-        });
+    before(async () => {
+      results = await crawler.search('cross spawn')
+    })
 
-        it('Results should be an Array', function() {
-            expect(results).to.be.an('array');
-        });
+    it('Results should be an Array', () => {
+      expect(results).to.be.an('array')
+    })
 
-        it('Results should contain package name', function() {
-            expect(results.name).to.exist;
-        });
+    it('Results should contain package name', () => {
+      expect(results[0]).to.have.a.property('name')
+    })
 
-        it('Results should contain package description', function() {
-            expect(results.description).to.exist;
-        });
+    it('Results should contain package description', () => {
+      expect(results[0]).to.have.a.property('description')
+    })
 
-        it('Results should contain package version', function() {
-            expect(results.version).to.exist;
-        });
+    it('Results should contain package version', () => {
+      expect(results[0]).to.have.a.property('version')
+    })
 
-        it('Results should contain package link', function() {
-            expect(results.link).to.exist;
-        });
-    });
+    it('Results should contain package link', () => {
+      expect(results[0]).to.have.a.property('link')
+    })
+  })
 
-    describe('Most Starred', function() {
-        const c = new Crawler();
-        let results;
+  describe('Most Starred', () => {
+    let results
 
-        before(function(done) {
-            c.recommend().then(res => {
-                results = res;
-                done();
-            });
-        });
+    before(async function () {
+      results = await crawler.recommend()
+    })
 
-        it('Results should be an Array', function() {
-            expect(results).to.be.an('array');
-        });
+    it('Results should be an Array', () => {
+      expect(results).to.be.an('array')
+    })
 
-        it('Results should contain package name', function() {
-            expect(results.name).to.exist;
-        });
+    it('Results should contain package name', () => {
+      expect(results[0]).to.have.a.property('name')
+    })
 
-        it('Results should contain package description', function() {
-            expect(results.description).to.exist;
-        });
+    it('Results should contain package description', () => {
+      expect(results[0]).to.have.a.property('description')
+    })
 
-        it('Results should contain package version', function() {
-            expect(results.version).to.exist;
-        });
+    it('Results should contain package version', () => {
+      expect(results[0]).to.have.a.property('version')
+    })
 
-        it('Results should contain package link', function() {
-            expect(results.link).to.exist;
-        });
-    });
-});
+    it('Results should contain package link', () => {
+      expect(results[0]).to.have.a.property('link')
+    })
+  })
+})
