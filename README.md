@@ -6,4 +6,4 @@ Simple inline mode [Telegram](https://telegram.me) bot that queries the [npm reg
 
 Click the button down below to deploy this to heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://gitlab.com/rjmunhoz/npmjs-telegram-bot/blob/master/)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rjmunhoz/npmjs-telegram-bot/blob/master/)
