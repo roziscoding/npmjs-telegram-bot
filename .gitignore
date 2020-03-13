@@ -2,3 +2,5 @@ node_modules
 dist
 .envrc
 *.log
+.env
+.now

@@ -1,0 +1,9 @@
+{
+  "env": {
+    "TELEGRAM_API_TOKEN": "@telegram-api-token"
+  },
+  "github": {
+    "enabled": true,
+    "autoJobCancelation": true
+  }
+}
