@@ -37,6 +37,5 @@ export async function endWithInlineQueryResults (results: InlineQueryResult[], c
     })
 
   if (!context.res.headersSent) context.res.status(200)
-    // .json(payload)
     .end()
 }

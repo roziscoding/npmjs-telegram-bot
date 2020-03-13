@@ -1,6 +1,5 @@
 import got from 'got'
 import logdown from 'logdown'
-// import { ParseMode } from '../lib/telegram'
 import { InlineQuery, InlineQueryResultArticle, InlineKeyboardMarkup } from 'telegram-typings'
 import { TelegramContext } from '../lib/types/TelegramContext'
 import { endWithInlineQueryResults } from '../lib/reply/end-with-inline-query-results'
