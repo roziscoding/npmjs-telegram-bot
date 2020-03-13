@@ -17,7 +17,7 @@
     "inline"
   ],
   "author": "Rogério Munhoz",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@now/node": "1.4.1",
     "@types/got": "9.6.9",
