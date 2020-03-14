@@ -1,5 +1,17 @@
 # Changelog
 
+<a name="next"></a>
+## next
+
+### Added
+
+- ✨ Add &#x60;/suggest &lt;package&gt;&#x60; command [[e5278fa](https://github.com/rjmunhoz/npmjs-telegram-bot/commit/e5278fa9966473de78b4340a744af14babacdd1b)]
+
+### Miscellaneous
+
+- 📝 Create CHANGELOG.md [[130b289](https://github.com/rjmunhoz/npmjs-telegram-bot/commit/130b2897a9d6f2541a31c0b5866ec0a324d99eb1)]
+
+
 <a name="2.1.0"></a>
 ## 2.1.0 (2020-03-13)
 
