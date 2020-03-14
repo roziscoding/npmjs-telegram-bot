@@ -15,7 +15,7 @@ export const enum ParseMode {
   MarkdownV1 = 'Markdown'
 }
 
-type Handlers = {
+export type UpdateHandlers = {
   message: (message: Message, context: TelegramContext) => any
   inlineQuery: (query: InlineQuery, context: TelegramContext) => any
   edit: (newMessage: Message, oldMessage: Message, context: TelegramContext) => any
@@ -25,33 +25,35 @@ type Handlers = {
   }
 }
 
-type HandleOptions = {
-  unhandled: boolean,
-  unhandledMessage: string
-}
-
-export const getUpdateHandler = (handlers: Partial<Handlers>, options?: Partial<HandleOptions>) => async (context: TelegramContext) => {
-  const { update, res } = context
+export const getUpdateHandler = (handlers: Partial<UpdateHandlers>) => async (context: TelegramContext) => {
+  const { update } = context
 
   const debug = (namespace: string, ...params: any[]) => logdown(`npm-telegram-bot:handlers:${namespace}`).debug(...params)
-  debug('generic', 'Received new update %o', update)
-
-  const config: HandleOptions = { unhandled: true, unhandledMessage: 'Hm... I did not get what you mean :/', ...(options ?? {}) }
-  debug('config', 'Built config %o', config)
+  debug('generic', 'Received new update with ID', update.update_id)
 
   if (update.message?.entities && update.message.entities && update.message.entities.length && update.message.text) {
     const { message: { text, entities } } = update
 
-    entities.forEach(entity => {
+    for (const entity of entities) {
       if (entity.type === 'bot_command' && entity.offset === 0) {
         const command = text.substr(entity.offset, entity.length).replace(/\//g, '')
         const params = text.substr(entity.offset + entity.length).trim().split(' ').filter(param => !!param)
+        debug('commands', 'Found command', command, 'with params', params)
 
-        if (handlers.commands?.[ command ]) return handlers.commands[ command ](params, context)
+        if (handlers.commands?.[ command ]) {
+          debug('commands', 'Found handler for command. Invoking it now')
+          await handlers.commands[ command ](params, context)
+          debug('commands', 'Handler finished')
+          return
+        }
+
+        debug('commands', 'No handler found for command')
+
         if (handlers.commands?.unhandled) return handlers.commands.unhandled([], context)
-        res.status(200).end()
+
+        debug('commands', 'Catchall handler for command')
       }
-    })
+    }
   }
 
   if (update.message && handlers.message) {
@@ -76,7 +78,10 @@ export const getUpdateHandler = (handlers: Partial<Handlers>, options?: Partial<
     await handlers.inlineQuery(update.inline_query, context)
   }
 
-  if (!context.res.headersSent) context.res.end()
+  if (!context.res.headersSent) {
+    debug('unhandled', 'Update was not handled. Finishing request')
+    context.res.end()
+  }
 }
 
 /** Context */

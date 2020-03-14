@@ -1,10 +1,16 @@
 import { NowRequest, NowResponse } from '@now/node'
+import inlineQueryHandler from '../handlers/inline-query'
+import suggestHandler from '../handlers/commands/suggest'
 import { InvalidTokenError } from '../lib/errors/InvalidTokenError'
 import { getUpdateHandler, getAuthenticatedContext } from '../lib/telegram'
-import inlineQueryHandler from '../handlers/inline-query'
 
 export default async (req: NowRequest, res: NowResponse) => {
-  const handleUpdate = getUpdateHandler({ inlineQuery: inlineQueryHandler })
+  const handleUpdate = getUpdateHandler({
+    inlineQuery: inlineQueryHandler,
+    commands: {
+      suggest: suggestHandler
+    }
+  })
 
   getAuthenticatedContext(process.env.TELEGRAM_API_TOKEN!, req, res)
     .then(handleUpdate)
