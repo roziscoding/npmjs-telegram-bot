@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="next"></a>
-## next
+<a name="2.2.0"></a>
+## 2.2.0 (2020-03-14)
 
 ### Added
 
@@ -9,7 +9,8 @@
 
 ### Miscellaneous
 
-- 📝 Create CHANGELOG.md [[130b289](https://github.com/rjmunhoz/npmjs-telegram-bot/commit/130b2897a9d6f2541a31c0b5866ec0a324d99eb1)]
+- 📝 Update CHANGELOG.md [[70fe357](https://github.com/rjmunhoz/npmjs-telegram-bot/commit/70fe357e6c76b9fe5609c3f12f48add8a0b94a7a)]
+    * 📝 Create CHANGELOG.md ([130b289](https://github.com/rjmunhoz/npmjs-telegram-bot/commit/130b2897a9d6f2541a31c0b5866ec0a324d99eb1))
 
 
 <a name="2.1.0"></a>
